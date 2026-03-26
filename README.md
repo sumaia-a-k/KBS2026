@@ -72,6 +72,21 @@ deactivate
 
 ## Configuration
 
+### Setting Up the `.env` File
+
+Before running the project, you need to create a `.env` file from the example template:
+
+```powershell
+copy .env.example .env
+```
+
+**Mac/Linux:**
+```bash
+cp .env.example .env
+```
+
+Then edit the `.env` file with your desired configuration values.
+
 ### `.env` File
 
 The `.env` file contains configuration settings:
