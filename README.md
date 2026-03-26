@@ -58,6 +58,14 @@ source kbs2026_env/bin/activate
 
 You'll see `(kbs2026_env)` appear in your terminal prompt when activated.
 
+✅ **Verification:** After activation, your terminal should display:
+```
+(kbs2026_env) PS D:\KBS2026\KBS2026>  # Windows
+(kbs2026_env) user@machine:~/KBS2026$  # Mac/Linux
+```
+
+If you see `(kbs2026_env)` at the start of your prompt, the environment is successfully activated!
+
 #### Step 3: Install Dependencies
 
 ```powershell
