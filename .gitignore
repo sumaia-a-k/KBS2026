@@ -2,6 +2,7 @@
 .env
 
 # Virtual Environment
+kbs2026_env/
 .venv/
 venv/
 ENV/

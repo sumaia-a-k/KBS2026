@@ -38,25 +38,25 @@ This will make working with CLIPS program files much easier.
 
 #### Step 1: Create a Virtual Environment
 
-A virtual environment (`.venv`) keeps your project dependencies isolated from your system Python. This prevents conflicts between projects.
+A virtual environment (`kbs2026_env`) keeps your project dependencies isolated from your system Python. This prevents conflicts between projects.
 
 ```powershell
-python -m venv .venv
+python -m venv kbs2026_env
 ```
 
 #### Step 2: Activate the Virtual Environment
 
 **Windows:**
 ```powershell
-.venv\Scripts\activate
+kbs2026_env\Scripts\activate
 ```
 
 **Mac/Linux:**
 ```bash
-source .venv/bin/activate
+source kbs2026_env/bin/activate
 ```
 
-You'll see `(.venv)` appear in your terminal prompt when activated.
+You'll see `(kbs2026_env)` appear in your terminal prompt when activated.
 
 #### Step 3: Install Dependencies
 
@@ -76,9 +76,9 @@ When you're done working on the project:
 deactivate
 ```
 
-#### What is `.venv`?
+#### What is `kbs2026_env`?
 
-- **`.venv`** is a directory containing an isolated Python environment for this project
+- **`kbs2026_env`** is a directory containing an isolated Python environment for this project
 - It includes a Python interpreter copy, pip, and a `site-packages` folder for libraries
 - Keeps project dependencies separate from system Python and other projects
 - Always activate it before running the project
