@@ -46,12 +46,12 @@ python -m venv kbs2026_env
 
 #### Step 2: Activate the Virtual Environment
 
-**Windows:**
+**Windows (PowerShell command):**
 ```powershell
 kbs2026_env\Scripts\activate
 ```
 
-**Mac/Linux:**
+**Mac/Linux (bash or Git Bash terminal):**
 ```bash
 source kbs2026_env/bin/activate
 ```
