@@ -1,3 +1,5 @@
+> **📝 Tip:** For better readability, open this README in VS Code's **Preview mode** by right-clicking the file tab and selecting "Open Preview" (or press `Ctrl+Shift+V`).
+
 # CLIPS Project Runner
 
 A Python-based CLIPS (Clips Language Integrated Production System) executor that reads CLIPS programs from files and runs them with inference engine support.
@@ -20,6 +22,17 @@ clipsPY/
 - Python 3.7+
 - `clipspy` package (CLIPS Python bindings)
 - `python-dotenv` package (for .env file support)
+
+## Recommended Tools
+
+### VS Code CLIPS Language Support Extension
+
+If you're using **Visual Studio Code**, it's recommended to install the CLIPS language support extension for better syntax highlighting and editing experience:
+
+- Search for "CLIPS" in the VS Code Extensions marketplace
+- Install a CLIPS language support extension to get syntax highlighting for `.clp` files
+
+This will make working with CLIPS program files much easier.
 
 ### Installation
 
