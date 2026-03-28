@@ -22,6 +22,15 @@ The script reads configuration from environment variables, which can be set in a
 - CLIPS_FILE: Path to the CLIPS file to load (default: 'clips/family_test.clp'). The path is relative to the script's working directory.
 - DEBUG: Boolean flag to enable debug output (default: 'False'). Set to 'true' (case-insensitive) to print success messages during file loading.
 
+It also accepts an optional command-line positional argument:
+
+- clips_file: Optional path to a `.clp` file. If provided, it overrides `CLIPS_FILE` from `.env` for that run only.
+
+File resolution priority is:
+1) CLI `clips_file` argument
+2) `.env` value `CLIPS_FILE`
+3) hardcoded fallback default
+
 Example .env file:
     CLIPS_FILE=clips/familyMembers.clp
     DEBUG=true
@@ -31,6 +40,7 @@ Usage
 1. Ensure all dependencies are installed.
 2. Create or modify a .env file for configuration if needed.
 3. Run the script: python run.py (or python3 run.py on some systems).
+4. Optionally override the file for one run: python run.py clips/weather.clp
 
 The script will:
 - Load the specified CLIPS file.
@@ -68,6 +78,7 @@ Notes
 
 import sys
 import os
+import argparse
 from pathlib import Path
 from dotenv import load_dotenv
 from clips import Environment
@@ -75,8 +86,22 @@ from clips import Environment
 # Load environment variables from .env file
 load_dotenv()
 
-# Get configuration from .env
-clips_file = os.getenv('CLIPS_FILE', 'clips/family_test.clp')
+# Parse optional CLI arguments. If omitted, fall back to .env values.
+parser = argparse.ArgumentParser(
+    description="Run a CLIPS knowledge base file with clipspy."
+)
+# Optional positional argument:
+# - With nargs="?", the argument may be omitted.
+# - If provided, it is used as the CLIPS file path for this run.
+parser.add_argument(
+    "clips_file",
+    nargs="?",
+    help="Path to the .clp file to run (overrides CLIPS_FILE from .env)",
+)
+args = parser.parse_args()
+
+# Resolve file choice priority: CLI argument > .env CLIPS_FILE > default.
+clips_file = args.clips_file or os.getenv('CLIPS_FILE') or 'clips/familyMembers.clp'
 debug = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Ensure the file exists

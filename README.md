@@ -113,7 +113,7 @@ Then edit the `.env` file with your desired configuration values.
 The `.env` file contains configuration settings:
 
 ```
-CLIPS_FILE=clips/family_test.clp
+CLIPS_FILE=clips/familyMembers.clp
 DEBUG=False
 ```
 
@@ -129,13 +129,33 @@ DEBUG=False
 python run.py
 ```
 
+Override `.env` from the command line:
+
+```powershell
+python run.py clips/weather.clp
+```
+
+### Command-Line Argument Details
+
+`run.py` defines one optional positional argument:
+
+- `clips_file`
+   - Type: positional argument (path to a `.clp` file)
+   - Optional because `nargs="?"` is used
+   - Behavior: when provided, it overrides `CLIPS_FILE` from `.env` for that run only
+
+Resolution order used by the script:
+1. CLI argument `clips_file`
+2. `.env` variable `CLIPS_FILE`
+3. Built-in default (`clips/familyMembers.clp`)
+
 #### Option 2: Run using Batch Script (Windows)
 
 ```powershell
 run.bat
 ```
 
-Both methods do the same thing - they execute the CLIPS file specified in `.env`.
+Both methods execute the CLIPS file from `.env` by default, and `python run.py <file.clp>` lets you override it for one run.
 
 ## What `run.py` Does
 
