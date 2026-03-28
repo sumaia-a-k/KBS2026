@@ -226,5 +226,5 @@ Bob and Charlie are siblings
 
 ## References
 
-- [CLIPS Language Documentation](http://clipsrules.sourceforge.net/)
+- [CLIPS Language Documentation](https://www.clipsrules.net/)
 - [clipspy GitHub Repository](https://github.com/noxdafox/clipspy)
