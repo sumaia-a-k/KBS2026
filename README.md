@@ -47,18 +47,21 @@ python -m venv kbs2026_env
 #### Step 2: Activate the Virtual Environment
 
 **Windows (PowerShell command):**
+
 ```powershell
 kbs2026_env\Scripts\activate
 ```
 
 **Mac/Linux (bash or Git Bash terminal):**
+
 ```bash
-source kbs2026_env/bin/activate
+source kbs2026_env/Scripts/activate
 ```
 
 You'll see `(kbs2026_env)` appear in your terminal prompt when activated.
 
 ✅ **Verification:** After activation, your terminal should display:
+
 ```
 (kbs2026_env) PS D:\KBS2026\KBS2026>  # Windows
 (kbs2026_env) user@machine:~/KBS2026$  # Mac/Linux
@@ -73,6 +76,7 @@ pip install -r requirements.txt
 ```
 
 Or manually install:
+
 ```powershell
 pip install clipspy python-dotenv
 ```
@@ -80,6 +84,7 @@ pip install clipspy python-dotenv
 #### Deactivate Virtual Environment
 
 When you're done working on the project:
+
 ```powershell
 deactivate
 ```
@@ -102,6 +107,7 @@ copy .env.example .env
 ```
 
 **Mac/Linux:**
+
 ```bash
 cp .env.example .env
 ```
@@ -118,6 +124,7 @@ DEBUG=False
 ```
 
 **Variables:**
+
 - `CLIPS_FILE` - Path to the CLIPS program file to execute (relative to project root)
 - `DEBUG` - Set to `True` for verbose output, `False` for normal operation
 
@@ -140,11 +147,12 @@ python run.py clips/weather.clp
 `run.py` defines one optional positional argument:
 
 - `clips_file`
-   - Type: positional argument (path to a `.clp` file)
-   - Optional because `nargs="?"` is used
-   - Behavior: when provided, it overrides `CLIPS_FILE` from `.env` for that run only
+  - Type: positional argument (path to a `.clp` file)
+  - Optional because `nargs="?"` is used
+  - Behavior: when provided, it overrides `CLIPS_FILE` from `.env` for that run only
 
 Resolution order used by the script:
+
 1. CLI argument `clips_file`
 2. `.env` variable `CLIPS_FILE`
 3. Built-in default (`clips/familyMembers.clp`)
@@ -173,10 +181,12 @@ Both methods execute the CLIPS file from `.env` by default, and `python run.py <
 The included `family_test.clp` contains:
 
 **Facts:**
+
 - Alice is the parent of Bob
 - Alice is the parent of Charlie
 
 **Rule:**
+
 - If two people share the same parent, they are siblings
 
 **Running it:**
@@ -186,6 +196,7 @@ python run.py
 ```
 
 **Output:**
+
 ```
 File loaded successfully!
 
@@ -204,11 +215,13 @@ Bob and Charlie are siblings
 ## Adding New CLIPS Programs
 
 1. **Create a new `.clp` file** in the `clips/` folder:
+
    ```
    clips/my_program.clp
    ```
 
 2. **Update `.env`** to point to it:
+
    ```
    CLIPS_FILE=clips/my_program.clp
    ```
@@ -237,12 +250,12 @@ Bob and Charlie are siblings
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| `No module named 'clips'` | Install clipspy: `pip install clipspy` |
-| `No module named 'dotenv'` | Install python-dotenv: `pip install python-dotenv` |
-| File not found error | Check that `CLIPS_FILE` path in `.env` is correct |
-| No output from rules | Ensure facts exist before rules reference them; use `(deffacts)` block |
+| Issue                      | Solution                                                               |
+| -------------------------- | ---------------------------------------------------------------------- |
+| `No module named 'clips'`  | Install clipspy: `pip install clipspy`                                 |
+| `No module named 'dotenv'` | Install python-dotenv: `pip install python-dotenv`                     |
+| File not found error       | Check that `CLIPS_FILE` path in `.env` is correct                      |
+| No output from rules       | Ensure facts exist before rules reference them; use `(deffacts)` block |
 
 ## References
 
