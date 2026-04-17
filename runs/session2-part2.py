@@ -38,10 +38,9 @@ from clips import Environment
 # Create a CLIPS environment
 env = Environment()
 
-# Resolve CLIPS file paths relative to this script, not current working directory.
-project_root = Path(__file__).resolve().parents[1]
-facts_file = project_root / "clips" / "session2" / "company_hierarchy_facts.clp"
-rules_file = project_root / "clips" / "session2" / "company_hierarchy_rules.clp"
+# Resolve CLIPS file paths from the current terminal working directory.
+facts_file = Path("clips/session2/company_hierarchy_facts.clp").resolve()
+rules_file = Path("clips/session2/company_hierarchy_rules.clp").resolve()
 
 for clips_file in (facts_file, rules_file):
     if not clips_file.exists():

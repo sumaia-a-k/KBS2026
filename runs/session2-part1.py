@@ -52,6 +52,8 @@ def activation_fact_details(env: Environment, activation) -> str:
     # - f-      : literal text "f-" used by CLIPS fact ids (e.g., f-10)
     # - (\d+)   : one or more digits, captured as a group (e.g., "10")
     # re.findall returns every captured number found in the activation string.
+    # debug how the data looks before processing:
+    #print(f"Debug: activation string: {activation}")
     fact_indexes = [int(value) for value in re.findall(r"f-(\d+)", str(activation))]
 
     if not fact_indexes:
@@ -116,15 +118,8 @@ def main() -> int:
     Returns:
         0 on success, 1 on configuration/load errors.
     """
-    # Resolve project root from this file location so execution is stable
-    # no matter which directory the terminal is currently in.
-    #
-    # Path(__file__).resolve().parents is zero-based:
-    # parents[0] -> folder containing this script (runs)
-    # parents[1] -> one level above runs (project root)
-    # In this project, we use parents[1] to reach the root that contains .env.
-    project_root = Path(__file__).resolve().parents[1]
-    load_dotenv(project_root / ".env")
+    # Load .env from the current working directory.
+    load_dotenv()
 
     # Read CLIPS file path from .env.
     clips_file_value = os.getenv("CLIPS_FILE")
@@ -132,10 +127,9 @@ def main() -> int:
         print("Error: CLIPS_FILE is not set in .env")
         return 1
 
-    # If CLIPS_FILE is relative, interpret it relative to project root.
+    # If CLIPS_FILE is relative, it is interpreted relative to current
+    # terminal working directory.
     clips_path = Path(clips_file_value)
-    if not clips_path.is_absolute():
-        clips_path = project_root / clips_path
     clips_path = clips_path.resolve()
 
     if not clips_path.exists():

@@ -37,8 +37,7 @@ def run_case(clips_file: Path, duplication_enabled: bool) -> None:
 
 
 def main() -> None:
-	project_root = Path(__file__).resolve().parents[1]
-	clips_file = project_root / "clips" / "session2" / "duplicatedFacts.clp"
+	clips_file = Path("clips/session2/duplicatedFacts.clp").resolve()
 
 	if not clips_file.exists():
 		raise FileNotFoundError(f"CLIPS file not found: {clips_file}")
