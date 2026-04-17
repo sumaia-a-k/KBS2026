@@ -7,8 +7,6 @@ Goal:
 4) Assert the same fact twice again and show both are kept.
 """
 
-import gc
-
 from clips import Environment
 
 
