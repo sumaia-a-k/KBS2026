@@ -7,7 +7,7 @@ test inputs to demonstrate both valid and invalid cases.
 
 from pathlib import Path
 
-from clips import Environment
+from clips import Environment, Symbol
 
 
 # Helper function to check if a deffunction exists in the CLIPS environment
@@ -15,6 +15,10 @@ def function_exists(env, name):
     deffunctions = env.call("get-deffunction-list")
     return any(str(func) == name for func in deffunctions)
 
+def to_bool(sym):
+    """Convert a CLIPS TRUE/FALSE Symbol to a Python bool."""
+	# Symbol("TRUE") creates CLIPS symbol object representing the true value.
+    return sym == Symbol("TRUE")
 
 def main() -> int:
 	clips_file = Path("clips/session3/localVariableInsideFunction.clp").resolve()
@@ -35,7 +39,7 @@ def main() -> int:
 
 	test_cases = [
 		(10, 5),
-		(8, 3),
+		("hello", 3),
 		(1.5, 2.0),
 		(0, 5),
 		(-4, 7),
@@ -51,6 +55,18 @@ def main() -> int:
 		for base, height in test_cases:
 			result = env.call("triangle-area", base, height)
 			print(f"base={base}, height={height} -> result={result}")
+
+	result1 = env.eval("(numberp 4)")        # Symbol("TRUE")
+	result2 = env.call("integerp" , 3.4)    # Symbol("FALSE")
+	result3 = env.call("floatp" , 2)         # Symbol("FALSE")   (2 is integer)
+	result4 = env.call("stringp" , "Japan") # Symbol("TRUE")
+
+	print("\nTesting type predicates:")
+	print(f"(numberp 4) -> {result1}")	
+	print(f"(integerp 3.4) -> {result2}")
+	print(f"(floatp 2) -> {result3}")
+	print(f"(stringp \"Japan\") -> {to_bool(result4)}")
+
 
 	return 0
 
