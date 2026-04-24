@@ -60,13 +60,18 @@ def main() -> int:
 	result2 = env.call("integerp" , 3.4)    # Symbol("FALSE")
 	result3 = env.call("floatp" , 2)         # Symbol("FALSE")   (2 is integer)
 	result4 = env.call("stringp" , "Japan") # Symbol("TRUE")
+	result5 = env.call("symbolp" , "Japan") # Symbol("FALSE")   ("Japan" is a string, not a symbol	)
+	result6 = env.call("symbolp" , Symbol("Japan")) # Symbol("TRUE")   (Symbol("Japan") is a symbol)
+	result7 = env.call("lexemep" , "Japan") # Symbol("TRUE")   (lexeme is a string or symbol)
 
 	print("\nTesting type predicates:")
 	print(f"(numberp 4) -> {result1}")	
-	print(f"(integerp 3.4) -> {result2}")
-	print(f"(floatp 2) -> {result3}")
+	print(f"(integerp 3.4) -> {to_bool(result2)}")
+	print(f"(floatp 2) -> {to_bool(result3)}")
 	print(f"(stringp \"Japan\") -> {to_bool(result4)}")
-
+	print(f"(symbolp \"Japan\") -> {to_bool(result5)}")
+	print(f"(symbolp Symbol(\"Japan\")) -> {to_bool(result6)}")
+	print(f"(lexemep \"Japan\") -> {to_bool(result7)}")
 
 	return 0
 
