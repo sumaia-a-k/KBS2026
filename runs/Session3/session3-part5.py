@@ -15,7 +15,7 @@ def main() -> int:
     env.reset()
     env.run()
 
-    print("\n=== Initial Facts === ")
+    print("\n=== Facts === ")
     for fact in env.facts():
         print(fact)
     return 0
