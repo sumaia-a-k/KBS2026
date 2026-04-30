@@ -31,6 +31,7 @@ def main() -> int:
     print(f"Loaded CLIPS file: {clips_file}")
 
     env.reset()
+    # env.eval("(watch all)")
     env.eval ("(set-strategy breadth)")
     env.run()
     return 0
