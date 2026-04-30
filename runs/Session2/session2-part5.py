@@ -16,9 +16,11 @@ def main() -> None:
         print(fact)
     print("======================================")
     assert_template = "(assert (employee (name Mark) (manager Alice)))"
-    assert_template2 = "(assert (employee (name Flamme) (manager Alice)))"
+    # you can either use env.assert_string or env.eval to assert a fact
+    # assert_template2 = "(assert (employee (name Flamme) (manager Alice)))"
+    env.assert_string(" (employee (name Flamme) (manager Alice))")
     env.eval(assert_template)
-    env.eval(assert_template2)
+    # env.eval(assert_template2)
     for fact in env.facts():
         print(fact)
     print("============== duplicate a fact exactly (same slots) ============== ")
