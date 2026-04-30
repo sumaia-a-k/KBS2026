@@ -14,5 +14,14 @@
 
 ; define the following rule 
 ; females with height over 170 are considered to be tall
+(defrule tall-female
+  (person (name ?n)(height ?h)(gender f | F))(test (> ?h 170))
+  =>
+  (assert (tall ?n))
+)
 ; men with their height is over 180 are considered to be tall
-
+(defrule tall-male
+  (person (name ?n)(height ?h)(gender m | M))(test (> ?h 180))
+  =>
+  (assert (tall ?n))
+)

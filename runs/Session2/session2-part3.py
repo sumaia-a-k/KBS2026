@@ -23,6 +23,9 @@ def main() -> None:
 	# env.eval("(set-fact-duplication TRUE)")
 	env.assert_string("(name Tom)")
 	env.assert_string("(name Tom)")
+	# you can also call it using eval
+	# env.eval("(assert (name Tom))")
+	# env.eval("(assert (name Tom))")
 	print_facts(env, "facts")
 
 
