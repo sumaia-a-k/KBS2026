@@ -26,3 +26,16 @@
    (person (name ?n) (age ?a &:(>= ?a 18) &:(<= ?a 65)))
    =>
    (printout t "Person " ?n " is within the valid age range." crlf))
+
+(deffacts dataFacts
+(data 42)
+(data "Hello"))
+
+
+(defrule checkNumber
+  (data ?x&:(numberp ?x))
+  =>
+  (printout t ?x " is a number." crlf)
+  )
+
+
