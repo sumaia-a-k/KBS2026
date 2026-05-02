@@ -27,24 +27,3 @@
    (employee (id "E18") (name "Ria")  (dept "IT") (role "analyst")   (skill 3))
    (employee (id "E19") (name "Sam")  (dept "HR") (role "recruiter") (skill 7))
    (employee (id "E20") (name "Tia")  (dept "HR") (role "manager")   (skill 2)))
-
-
-(defrule find-team-alpha
-   (employee (id ?id1) (name ?name1) (dept ?dept) (role ?role1) (skill ?skill1 &:(>= ?skill1 5)))
-   (employee (id ?id2&~?id1) (name ?name2) (dept ?dept) (role ?role2&~?role1) (skill ?skill2 &:(>= ?skill2 5)))
-   =>
-   (printout t "Team1: " ?name1 " + " ?name2 
-             " (Dept: " ?dept ")" crlf))
-
-(defrule find-team-test
-   (employee (id ?id1) (name ?name1) (dept ?dept) (role ?role1) (skill ?skill1))
-   (employee (id ?id2) (name ?name2) (dept ?dept) (role ?role2) (skill ?skill2))
-   (test (>= ?skill1 5))
-   (test (>= ?skill2 5))
-   (test (neq ?id1 ?id2))
-   (test (neq ?role1 ?role2))
-   =>
-   (printout t "Team2: " ?name1 " + " ?name2 
-             " (Dept: " ?dept ")" crlf))
-
-;(id ?id2&~?id1), (dept ?dept), and (role ?role2&~?role1)  are evaluated during the Beta join phase, 
