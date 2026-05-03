@@ -1,0 +1,15 @@
+(deffacts students
+(person"Samer")
+(person"Lama")
+(person"Fadel")
+(AI-student "Samer")
+(AI-student "Lama")
+(AI-student "Fadel")
+(Fourth-year "Lama")
+(Fourth-year "Fadel")
+(Fourth-year "Samer")
+(person "Ali")
+)
+
+(defrule all-can-apply-KBS-exam (forall ( person ?s) (AI-student ?s) (Fourth-year ?s))
+=> (printout t " yes all people can apply to the exam" crlf))
