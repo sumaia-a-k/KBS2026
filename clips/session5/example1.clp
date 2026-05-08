@@ -201,6 +201,7 @@
 ;   If (ask q1) exists, user is shown menu prompt and answer q1 is asserted.
 ; -----------------------------------------------------------------------------
 (defrule ask-question-by-id "Ask question and assert the answer"
+   ; both lines are conditions, and they also perform binding:
    (question (id ?id) (question-text ?text) (question-type ?type))
    ?ask <- (ask ?id)
    =>
