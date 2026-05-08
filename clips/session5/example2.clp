@@ -13,21 +13,7 @@
                else "Fail")))
 
 ;; =============================================================================
-;; FACT BINDING EXAMPLE: DESCRIPTIVE vs DIRECT
-;; =============================================================================
 
-(deftemplate product
-   (slot id (type INTEGER))
-   (slot name (type STRING))
-   (slot price (type FLOAT))
-   (slot stock (type INTEGER)))
-
-(deffacts inventory
-   (product (id 101) (name "Laptop")    (price 999.99) (stock 15))
-   (product (id 102) (name "Mouse")     (price  25.50) (stock  3))
-   (product (id 103) (name "Monitor")   (price 300.00) (stock  0)))
-
-;---
 (deftemplate student
    (slot id (type INTEGER))
    (slot name (type STRING))
