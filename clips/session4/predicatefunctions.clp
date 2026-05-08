@@ -12,6 +12,13 @@
    =>
    (printout t "ALERT: Sensor " ?id " exceeds 100°C" crlf))
 
+; (defrule high-temp-alert2
+;    (sensor (id ?id) (value ?v))
+;    (test (> ?v 100))
+;    =>
+;    (printout t "ALERT: Sensor " ?id " exceeds 100°C" crlf))
+
+
 
 (deftemplate person
  (slot name)
