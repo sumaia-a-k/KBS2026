@@ -278,14 +278,14 @@
 ; ACTION:
 ;   Asserts (ask q2), which activates ask-question-by-id for q2.
 ; -----------------------------------------------------------------------------
-(defrule ask-for-one
+(defrule ask-for-one-student-info
    (answer (id q1) (text 2))
    =>
    (assert (ask q2)))
 
 
 ; -----------------------------------------------------------------------------
-; RULE: one-studnet-info
+; RULE: one-student-info
 ; PURPOSE:
 ;   Displays complete information for one student selected by id.
 ; TRIGGERS WHEN:
@@ -311,7 +311,7 @@
 ; ACTION:
 ;   Asserts (ask q3), which activates ask-question-by-id for q3.
 ; -----------------------------------------------------------------------------
-  (defrule ask-for-modify
+  (defrule ask-for-modify-student-mark
    (answer (id q1) (text 3))
    =>
    (assert (ask q3)))
