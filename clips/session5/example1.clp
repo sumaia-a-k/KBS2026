@@ -13,7 +13,7 @@
 ;- student mark (number between 0 and 30)
 ;- student attendance (integer between 0 and 11)
 ;
-;2- define facts of students 
+;2- add student facts
 ; 
 ;3-we will define a system which shows some options
 ;- option one: when we enter number 1,it will shows all students with (allowed or not allowed)
@@ -44,7 +44,7 @@
    (slot name (type STRING))
    (slot mark (type NUMBER) (range 0 30))
    (slot attend (type INTEGER) (range 0 11))
-   (slot id (type INTEGER) (range 0 ?VARIABLE)))
+   (slot id (type INTEGER) (range 0 ?VARIABLE))) ; ?VARIABLE: The maximum value is positive infinity (+∞positive infinity+∞), meaning there is no upper bound on the integer value
 
 
 ; -----------------------------------------------------------------------------

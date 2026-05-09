@@ -18,3 +18,16 @@
       (and (eq ?e:dept "IT") (> ?e:salary 50000.0)) ; FILTER CONDITION
       (printout t "ID: " ?e:id " | Name: " ?e:name " | Salary: $" ?e:salary crlf))
    (printout t "--- End of List ---" crlf))
+
+
+;-------------------------example with no template---------------------------------
+(deffacts values
+   (value 10)
+   (value 11))
+
+; This will iterate over both ordered facts
+(defrule show-values
+   =>
+   (printout t "--- Values in the system ---" crlf)
+   (do-for-all-facts ((?v value))
+      (printout t "Found value: " ?v crlf)))
