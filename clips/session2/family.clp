@@ -21,8 +21,9 @@
 
 ;define rule for father 
 (defrule father
-(and (parent ?x ?y) (male ?x))
-=> (assert (father ?x ?y)))
+(parent ?x ?y) (male ?x)
+=> (assert (father ?x ?y))
+(printout t "Father: " ?x " is the father of " ?y crlf))
 
 ;define rule for mother
 (defrule mother
