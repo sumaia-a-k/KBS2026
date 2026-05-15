@@ -51,15 +51,15 @@ def main() -> int:
 
 	print(f"Loaded CLIPS file: {clips_file}")
 	env.reset()
+	
+    # Show the current agenda before the ask rule consumes the menu fact.
+	env.eval("(set-strategy breadth)")
+	env.eval("(agenda)")
 
 	while True:
 		# Keep only fresh user answers for each interaction cycle.
 		env.eval("(retract-answer)")
 		env.assert_string("(ask q1)")
-
-		# Show the current agenda before the ask rule consumes the menu fact.
-		env.eval("(set-strategy breadth)")
-		env.eval("(agenda)")
 
 		# Step CLIPS until ask-question-by-id has actually stored q1.
 		choice = None
