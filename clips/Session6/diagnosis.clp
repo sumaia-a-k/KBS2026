@@ -30,9 +30,7 @@
 (disease (name "gallbladder")(symptoms "h" "i" "g"))
 (disease (name "atrophic gastritis")(symptoms "b" "f" "j")))
 
-; write function for contain 
-; (deffunction contains (?list1 ?list2)
-; )
+; list 1 contains all the elements of list 2
 
 
 ;-------------------------
@@ -102,19 +100,7 @@ else (if (eq ?type patient-id) then
    (assert (answer (id ?id) (text ?answer)))
    (retract ?ask))
 ;------------------ rules for answers 
-(defrule diagnosis-tumor
-(declare (salience 5))
-(logical(patient (number ?num) (full-name ?f) (signs $?signs)))
-(disease (name ?n &:(eq ?n "tumor")) (symptoms $?symptoms &:(contains ?signs ?symptoms)))
-=>
-(assert(diagnosis (number ?num)(disease ?n) (full-name ?f))))
-;--------------------
-(defrule diagnosis-rule
-(declare (salience 4))
-(logical(patient (number ?num) (full-name ?f) (signs $?signs)))
-(disease (name ?n &:(neq ?n "tumor")) (symptoms $?symptoms &:(contains ?signs ?symptoms)))
-=>
-(assert(diagnosis (number ?num)(disease ?n)(full-name ?f))))
+
 ;---------------------
 ;------------------
 (defrule disease-patient
