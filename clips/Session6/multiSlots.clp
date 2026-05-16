@@ -59,10 +59,10 @@
    (printout t "Original: " ?h crlf crlf)
    (printout t "------------------------------" crlf))
 
-(defrule  modify-hobbies-list
+(defrule  change-hobbies-list
    (person (name "Tamer") (hobbies $?h))
    =>
-   (printout t "modify-hobbies-list rule fired for Tamer" crlf)
+   (printout t "change-hobbies-list rule fired for Tamer" crlf)
    (bind ?replaced (replace$ ?h 3 3 "coding"))
    (printout t "replace$ (third to be coding): " ?replaced crlf)
 
