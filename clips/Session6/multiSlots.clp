@@ -22,16 +22,14 @@
    (printout t "------------------------------" crlf))
 
 (defrule  check-programmer
-   (person (name ?n) (hobbies $?h))
-   (test (member$ "programming" ?h))
+   (person (name ?n) (hobbies $?h &:(member$ "programming" ?h)))
    =>
    (printout t "check-programmer rule fired for " ?n crlf)
    (printout t ?n " is a programmer!" crlf)
    (printout t "------------------------------" crlf))
 
 (defrule  show-other-hobbies
-   (person (name ?n) (hobbies $?h))
-   (test (> (length$ ?h) 1))
+   (person (name ?n) (hobbies $?h &:(> (length$ ?h) 1)))
    =>
    (printout t "show-other-hobbies rule fired for " ?n crlf)
    (printout t ?n "'s other hobbies: " (rest$ ?h) crlf)
