@@ -4,7 +4,8 @@
 
 (defmodule MAIN
 	(export deftemplate mainFact)
-	(export deftemplate statusFact))
+	(export deftemplate statusFact)
+    )
 
 (deftemplate MAIN::mainFact
 	(slot goal))
@@ -25,6 +26,12 @@
 	(statusFact (goal E) (state ready))
 	(statusFact (goal F) (state ready)))
 
+(defrule MAIN::r1
+    (mainFact (goal A))
+    =>
+    (printout t "MAIN::r1 (mainFact)" crlf)
+    )
+
 (defmodule M1
 	(import MAIN deftemplate mainFact))
 
@@ -40,7 +47,7 @@
 	(mainFact (goal A))
 	=>
 	(printout t "M1::r1 (mainFact)" crlf)
-    (return)
+    ; (return)
     )
 
 (defrule M1::r2
