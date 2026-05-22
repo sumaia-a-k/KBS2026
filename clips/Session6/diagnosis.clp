@@ -31,6 +31,12 @@
 (disease (name "atrophic gastritis")(symptoms "b" "f" "j")))
 
 ; list 1 contains all the elements of list 2
+(deffunction contains (?list1 ?list2)
+(while (> (length$ ?list2) 0 ) do
+(bind ?f (nth$ 1 ?list2))
+(if (not (member$ ?f ?list1)) then (return FALSE))
+(bind ?list2 (rest$ ?list2)))
+(return TRUE))
 
 
 ;-------------------------
@@ -100,7 +106,19 @@ else (if (eq ?type patient-id) then
    (assert (answer (id ?id) (text ?answer)))
    (retract ?ask))
 ;------------------ rules for answers 
-
+(defrule diagnosis-tumor
+(declare (salience 5))
+(logical(patient (number ?num) (full-name ?f) (signs $?signs)))
+(disease (name ?n &:(eq ?n "tumor")) (symptoms $?symptoms &:(contains ?signs ?symptoms)))
+=>
+(assert(diagnosis (number ?num)(disease ?n) (full-name ?f))))
+;--------------------
+(defrule diagnosis-rule
+(declare (salience 4))
+(logical(patient (number ?num) (full-name ?f) (signs $?signs)))
+(disease (name ?n &:(neq ?n "tumor")) (symptoms $?symptoms &:(contains ?signs ?symptoms)))
+=>
+(assert(diagnosis (number ?num)(disease ?n)(full-name ?f))))
 ;---------------------
 ;------------------
 (defrule disease-patient
