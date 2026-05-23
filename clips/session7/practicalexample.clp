@@ -62,7 +62,6 @@
 (fox-position ?fp)
 (depth ?depth))
 (op ?fp ?op-side)
-(test (neq ?fp ?op-side))
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (fox-position ?op-side)
@@ -77,7 +76,6 @@
 (sheep-position ?fp)
 (depth ?depth))
 (op ?fp ?op-side)
-(test (neq ?fp ?op-side))
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (sheep-position ?op-side)
@@ -91,7 +89,6 @@
 (grass-position ?fp)
 (depth ?depth))
 (op ?fp ?op-side)
-(test (neq ?fp ?op-side))
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (grass-position ?op-side)
@@ -105,7 +102,6 @@
 (farmer-position ?fp)
 (depth ?depth))
 (op ?fp ?op-side)
-(test (neq ?fp ?op-side))
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (parent ?parent)
