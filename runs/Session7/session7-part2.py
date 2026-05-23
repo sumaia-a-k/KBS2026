@@ -60,12 +60,13 @@ def main() -> int:
 	# print("\n=== Running without focus (default focus MAIN) ===")
 	# env.run()
 	print("\n=== Using focus M2 M1 M3 and running ===")
-	print("Expected firing order: M3, then M2, then M1")
+	print("Expected firing order: M2, then M1, then M3")
 	# focus pushes modules onto the focus stack; last one is executed first.
 	env.eval("(focus M2 M1 M3)")
 	env.run()
+	print("\n=== Using focus MAIN and running ===")
 	env.eval("(focus MAIN)")
-	env.run()
+	env.run() # nothing will happen because Main is by default was added to the focus stack 
 	print("\n=== Done ===")
 
 	try:
