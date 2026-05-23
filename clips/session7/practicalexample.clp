@@ -16,8 +16,8 @@
 (grass-position Left)
 (farmer-position Left)
 (sheep-position Left))
-(op Right Left)
-(op Left Right))
+(move Right Left)
+(move Left Right))
 
 ; Print path from root node to the current node using parent links.
 ; Notes about this function:
@@ -54,6 +54,8 @@
 				 " | Fox: " ?px " -> " ?cx
 				 " | Grass: " ?pg " -> " ?cg crlf)))
 
+
+
 (defmodule MOVEMENTS (import MAIN ?ALL))
 
 (defrule MOVEMENTS::fox-move
@@ -61,7 +63,7 @@
 (farmer-position ?fp)
 (fox-position ?fp)
 (depth ?depth))
-(op ?fp ?op-side)
+(move ?fp ?op-side)
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (fox-position ?op-side)
@@ -75,7 +77,7 @@
 (farmer-position ?fp)
 (sheep-position ?fp)
 (depth ?depth))
-(op ?fp ?op-side)
+(move ?fp ?op-side)
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (sheep-position ?op-side)
@@ -88,7 +90,7 @@
 (node (farmer-position ?fp)
 (grass-position ?fp)
 (depth ?depth))
-(op ?fp ?op-side)
+(move ?fp ?op-side)
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (grass-position ?op-side)
@@ -101,7 +103,7 @@
 ?parent<-(node
 (farmer-position ?fp)
 (depth ?depth))
-(op ?fp ?op-side)
+(move ?fp ?op-side)
 =>
 (duplicate ?parent(farmer-position ?op-side)
 (parent ?parent)
