@@ -57,7 +57,8 @@ def main() -> int:
 	env.build("(defrule r3 (A) => (printout t \"Module A M2\" crlf))")
 
 	env.reset() # or env.eval("(reset)")
-
+	modMain = env.eval("(get-current-module)")
+	print(f"Current module: {modMain}")
 	env.eval("(set-current-module M1)")
 	env.eval("(assert (A))")
 	env.eval("(set-current-module M2)")
@@ -67,8 +68,10 @@ def main() -> int:
 	env.eval("(agenda)")
 	env.eval("(rules)")
 	#----------------------
-	print("\n=== Setting current module to M1 and running ===")
-	env.eval("(set-current-module M1)")
+	print("\n=== Setting current module to M2 and running ===")
+	env.eval("(set-current-module M2)")
+	modeM2 = env.eval("(get-current-module)")
+	print(f"Current : {modeM2}")
 	env.run()
 	print()
     #---------------
