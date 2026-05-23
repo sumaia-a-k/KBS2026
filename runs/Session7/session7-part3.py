@@ -53,7 +53,7 @@ def main() -> int:
 	env.eval("(agenda)")
 
 	print("\n=== Run by focusing M1 then M2 ===")
-	print("Expected firing order: M2 agenda first, then M1 (focus stack behavior)")
+	print("Expected firing order: M1 then M2")
 	env.eval("(focus M1 M2)")
 	env.run()
 
