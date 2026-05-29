@@ -31,10 +31,15 @@
 	(b))
 
 ; This rule is less specific because its LHS has fewer conditions.
-(defrule simple-rule
+(defrule simple-rule1
 	(a)
 	=>
-	(printout t "simple-rule fired" crlf))
+	(printout t "simple-rule 1 fired" crlf))
+
+(defrule simple-rule2
+	(b)
+	=>
+	(printout t "simple-rule 2 fired" crlf))
 
 ; This rule is more specific because it requires both (a) and (b).
 (defrule complex-rule
