@@ -11,7 +11,7 @@ def main() -> int:
 	# Route CLIPS printout output through Python logging.
 	logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-	strategy = "complexity"
+	strategy = "simplicity"
 	# Change this to "complexity" if you want to compare the other strategy.
 	clips_file = Path("clips/session8/example3.clp").resolve()
 
